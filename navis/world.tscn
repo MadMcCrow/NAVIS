@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://851jn0c8duox"]
+
+[sub_resource type="Environment" id="Environment_gh4ly"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rtgmn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gh4ly")
+camera_attributes = SubResource("CameraAttributesPractical_rtgmn")
