@@ -1,5 +1,12 @@
-This is a flake for building godot from master.
+# Navis
+ This game is build with godot on linux and compiled via nix
 
-# How to run
-
-Have a nix build with flakes installed. run `nix run`. That's it!
+## NIX
+if your system has nix, you can build the game with : 
+```
+nix build
+```
+to run godot :
+```
+nix run .#godot
+```

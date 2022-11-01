@@ -1,0 +1,6 @@
+[gd_resource type="ImmediateMesh" load_steps=2 format=3 uid="uid://dy4efwhwh6vem"]
+
+[ext_resource type="Script" path="res://script/water.gd" id="1_pe1mk"]
+
+[resource]
+script = ExtResource("1_pe1mk")

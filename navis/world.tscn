@@ -1,11 +1,102 @@
-[gd_scene load_steps=3 format=3 uid="uid://851jn0c8duox"]
+[gd_scene load_steps=13 format=3 uid="uid://cx1rw3ukqmfwo"]
 
-[sub_resource type="Environment" id="Environment_gh4ly"]
+[ext_resource type="Script" path="res://script/water_node.gd" id="1_stf8e"]
+[ext_resource type="Script" path="res://script/water.gd" id="2_rf8o4"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rtgmn"]
+[sub_resource type="Animation" id="Animation_nn8uq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.645772, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vf3mt"]
+resource_name = "lift"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.698132, 0, 0), Vector3(0.645772, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp3a2"]
+_data = {
+"RESET": SubResource("Animation_nn8uq"),
+"lift": SubResource("Animation_vf3mt")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xran"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sdv88"]
+_surfaces = [{
+"aabb": AABB(-1023.33, 0, -1680.94, 2046.66, 1e-05, 772.42),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 2, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(2, 213, 127, 196, 0, 0, 0, 0, 248, 29, 210, 196, 255, 127, 255, 255, 255, 255, 255, 191, 147, 126, 9, 196, 0, 0, 0, 0, 8, 33, 99, 196, 255, 127, 255, 255, 255, 255, 255, 191, 2, 213, 127, 68, 0, 0, 0, 0, 248, 29, 210, 196, 255, 127, 255, 255, 255, 255, 255, 191, 147, 126, 9, 68, 0, 0, 0, 0, 8, 33, 99, 196, 255, 127, 255, 255, 255, 255, 255, 191)
+}]
+script = ExtResource("2_rf8o4")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7gbsp"]
+
+[sub_resource type="Sky" id="Sky_mygps"]
+sky_material = SubResource("ProceduralSkyMaterial_7gbsp")
+
+[sub_resource type="Environment" id="Environment_4cgeb"]
+background_mode = 2
+sky = SubResource("Sky_mygps")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_5scyv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mou4o"]
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.798636, -0.601815, 0, 0.601815, 0.798636, 0, 14.6699, 0)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+autoplay = "lift"
+libraries = {
+"": SubResource("AnimationLibrary_pp3a2")
+}
+
+[node name="Water" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_2xran")
+mesh = SubResource("ArrayMesh_sdv88")
+skeleton = NodePath("")
+script = ExtResource("1_stf8e")
+water_script = ExtResource("2_rf8o4")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gh4ly")
-camera_attributes = SubResource("CameraAttributesPractical_rtgmn")
+environment = SubResource("Environment_4cgeb")
+camera_attributes = SubResource("CameraAttributesPhysical_5scyv")
+
+[node name="test_cyl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.77307)
+mesh = SubResource("CylinderMesh_mou4o")
+skeleton = NodePath("../WorldEnvironment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.630473, 0.599736, -0.492769, 0, 0.634838, 0.772645, 0.776212, -0.487131, 0.400248, -24.5515, 30.3487, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
