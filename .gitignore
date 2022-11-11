@@ -2,4 +2,4 @@
 
 ## NIX
 # result from `nix build`
-result
+result/

@@ -3,11 +3,11 @@
     "godot": {
       "flake": false,
       "locked": {
-        "lastModified": 1667128187,
-        "narHash": "sha256-uALb2PZoLc0R9Hu/2EmXv78z6R6/moA0yForu8xuK9o=",
+        "lastModified": 1667635276,
+        "narHash": "sha256-Y5MjKRbuDnkYoMzvPN4b8v3FZQxAlVs0a5mtqRbnJCg=",
         "owner": "godotengine",
         "repo": "godot",
-        "rev": "ad3f2a234082f0d62820094199c05855115c1341",
+        "rev": "6882890a34528e056f13020798f4a473046990bb",
         "type": "github"
       },
       "original": {
@@ -19,11 +19,11 @@
     "godot-cpp": {
       "flake": false,
       "locked": {
-        "lastModified": 1666291668,
-        "narHash": "sha256-jdXWyCGc37R9vpOCKVOcjJe7Cj2Lqq0S9UGZuiqXOJA=",
+        "lastModified": 1667549542,
+        "narHash": "sha256-z2koL42rA4aNfiJ9xpdHr+qR+Uvaujmz82WZiYGZhrg=",
         "owner": "godotengine",
         "repo": "godot-cpp",
-        "rev": "adf4802f4bd7fb7cafc1e94882df3f105d7f7afd",
+        "rev": "73ad6717e907ab24a5c5550f518eda53092c4495",
         "type": "github"
       },
       "original": {
@@ -41,11 +41,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667150655,
-        "narHash": "sha256-GTMc0fLgirjFMo/XNCLZbpQN0WlmqI+t5KXjgE0YveM=",
+        "lastModified": 1667668564,
+        "narHash": "sha256-saRfuJEfOhO1ZYeBvEhc8SAfQwmZz3GQKR7+1t5d8EQ=",
         "owner": "MadMcCrow",
         "repo": "Godot-Flake",
-        "rev": "c6f2a1ceceff6d6ec80a648968839a5877137c52",
+        "rev": "1efa87f73b18481fb3ee3a14992be7544a293daa",
         "type": "github"
       },
       "original": {
@@ -56,10 +56,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1666447894,
-        "narHash": "sha256-i9WHX4w/et4qPMzEXd9POmnO0/bthjr7R4cblKNHGms=",
-        "path": "/nix/store/g24cmgn2a0x25jpx1a9jbh320rx41c1k-source",
-        "rev": "95aeaf83c247b8f5aa561684317ecd860476fcd6",
+        "lastModified": 1667482890,
+        "narHash": "sha256-pua0jp87iwN7NBY5/ypx0s9L9CG49Ju/NI4wGwurHc4=",
+        "path": "/nix/store/brqf6qdrsq5s3k0siv47wbgrgz1i9dxz-source",
+        "rev": "a2a777538d971c6b01c6e54af89ddd6567c055e8",
         "type": "path"
       },
       "original": {

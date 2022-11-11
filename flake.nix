@@ -27,7 +27,7 @@
           '';
         };
 
-	      default = pkgs.linkFarmFromDrvs "navis" [ packages."${system}".navis-game godot];
+	      default = pkgs.linkFarmFromDrvs "navis" [godot];
       };
 
       devShells."${system}".default =
