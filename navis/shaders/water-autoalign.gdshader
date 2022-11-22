@@ -49,12 +49,12 @@ void vertex() {
 	vec3 world_pos = (pos * MODEL_MATRIX).xyz;
 	float height   = wave(world_pos.xz); // y is up    
 	// get angle with camera
-	vec3 cam_forward = normalize((vec4(0.f,0.f,1.f,1.f) * VIEW_MATRIX).xyz);
+	vec3 cam_forward = CAMERA_DIRECTION_WORLD;
 	vec3 forward     = normalize(cam_forward.xyz * UP_MASK);
 	float theta      = acos(dot(cam_forward, forward));
 	// adapt to screen
 	pos *= VIEW_MATRIX;
-	pos = rotate(pos,RIGHT,-1.f * theta);ds
+	pos = rotate(pos,RIGHT,-1.f * theta);
 	//pos *= PROJECTION_MATRIX;
 	pos.xyz = pos.zyx;
 	// apply to vertex

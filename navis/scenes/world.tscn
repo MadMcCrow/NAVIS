@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx1rw3ukqmfwo"]
+
+[ext_resource type="PackedScene" uid="uid://bwaktdrurv7bf" path="res://scenes/player.tscn" id="1_lop2b"]
+[ext_resource type="PackedScene" uid="uid://c7a77tveffw4v" path="res://scenes/water.tscn" id="2_7iafg"]
+[ext_resource type="Environment" uid="uid://ma7qnc7y57o" path="res://scenes/world_environment.tres" id="3_fcyiw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_imn26"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="player_scene" parent="." instance=ExtResource("1_lop2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.563229, 0)
+
+[node name="water-scene" parent="." instance=ExtResource("2_7iafg")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.913545, 0.352244, -0.203368, 0, 0.5, 0.866025, 0.406737, 0.791154, -0.456773, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_fcyiw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.30056, 0, 0)
+mesh = SubResource("BoxMesh_imn26")

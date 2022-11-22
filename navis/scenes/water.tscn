@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7a77tveffw4v"]
+
+[ext_resource type="Material" uid="uid://b4um0k6poawf5" path="res://resources/water/water_material.tres" id="1_jod2x"]
+[ext_resource type="Script" path="res://scripts/water_node.gd" id="2_jmb5k"]
+[ext_resource type="Script" path="res://scripts/water_gen_mesh.gd" id="3_s2kyh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6k1vu"]
+material = ExtResource("1_jod2x")
+size = Vector2(100, 100)
+orientation = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o5dn0"]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 100.0
+rings = 1
+
+[node name="water-scene" type="Node3D"]
+metadata/_edit_vertical_guides_ = [993.0]
+
+[node name="water-by-script" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_jod2x")
+cast_shadow = 0
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_6k1vu")
+script = ExtResource("2_jmb5k")
+water_script = ExtResource("3_s2kyh")
+editor_mesh = SubResource("QuadMesh_6k1vu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.649658, 2.54828, 0.177094)
+mesh = SubResource("CylinderMesh_o5dn0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0730467, 0.997329, 0, -0.997329, -0.0730467, -24.4785, -21.0397, 31.3948)
+mesh = SubResource("CylinderMesh_o5dn0")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwaktdrurv7bf"]
+
+[ext_resource type="PackedScene" uid="uid://cp1stcje5mbk8" path="res://scenes/boat.tscn" id="1_b62ie"]
+[ext_resource type="Script" path="res://scripts/boat_controller.gd" id="1_j612q"]
+[ext_resource type="Script" path="res://scripts/boat_physics.gd" id="1_rsrnk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xg3i"]
+margin = 0.001
+radius = 1.478
+height = 8.28
+
+[node name="player_scene" type="Node3D"]
+
+[node name="boat_rigid_body" type="RigidBody3D" parent="."]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+angular_damp = 3.0
+script = ExtResource("1_rsrnk")
+
+[node name="Controller" type="Node" parent="boat_rigid_body" node_paths=PackedStringArray("boat_body", "camera_node")]
+script = ExtResource("1_j612q")
+boat_body = NodePath("..")
+input_forward = &"move_forward"
+input_backward = &"move_backward"
+input_right = &"move_right"
+input_left = &"move_left"
+input_threshold = 0.1
+camera_node = NodePath("../boat_capsule/boat_mesh/player_camera")
+
+[node name="boat_capsule" type="CollisionShape3D" parent="boat_rigid_body"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 1.683, -0.619)
+shape = SubResource("CapsuleShape3D_1xg3i")
+
+[node name="boat_mesh" parent="boat_rigid_body/boat_capsule" instance=ExtResource("1_b62ie")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.619, 1.683)
+
+[node name="player_camera" type="Camera3D" parent="boat_rigid_body/boat_capsule/boat_mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.839658, 0.543116, 0, -0.543116, 0.839658, -1.13687e-13, 18.9663, 18.6336)

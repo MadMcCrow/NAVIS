@@ -1,0 +1,12 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ma7qnc7y57o"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_molkw"]
+
+[sub_resource type="Sky" id="Sky_ugk25"]
+sky_material = SubResource("PhysicalSkyMaterial_molkw")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_ugk25")
+tonemap_mode = 2
+glow_enabled = true
