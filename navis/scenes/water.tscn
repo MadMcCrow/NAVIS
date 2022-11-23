@@ -1,18 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7a77tveffw4v"]
+[gd_scene load_steps=13 format=3 uid="uid://dnxbwkj8g13lv"]
 
 [ext_resource type="Material" uid="uid://b4um0k6poawf5" path="res://resources/water/water_material.tres" id="1_jod2x"]
-[ext_resource type="Script" path="res://scripts/water_node.gd" id="2_jmb5k"]
-[ext_resource type="Script" path="res://scripts/water_gen_mesh.gd" id="3_s2kyh"]
+[ext_resource type="Script" path="res://shaders/scripts/water_node.gd" id="2_jmb5k"]
+[ext_resource type="Script" path="res://shaders/scripts/water_gen_mesh.gd" id="3_s2kyh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6k1vu"]
 material = ExtResource("1_jod2x")
-size = Vector2(100, 100)
+size = Vector2(500, 500)
 orientation = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e6yx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d2gye"]
+material = SubResource("StandardMaterial3D_0e6yx")
+radius = 19.419
+height = 200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5kun"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5mlx"]
+material = SubResource("StandardMaterial3D_r5kun")
+radius = 17.568
+height = 35.136
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7gew"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_568y3"]
+material = SubResource("StandardMaterial3D_r7gew")
+size = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tb0g"]
+albedo_color = Color(1, 1, 0, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_o5dn0"]
+material = SubResource("StandardMaterial3D_4tb0g")
 top_radius = 10.0
 bottom_radius = 10.0
-height = 100.0
+height = 200.0
 rings = 1
 
 [node name="water-scene" type="Node3D"]
@@ -27,10 +53,24 @@ script = ExtResource("2_jmb5k")
 water_script = ExtResource("3_s2kyh")
 editor_mesh = SubResource("QuadMesh_6k1vu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.649658, 2.54828, 0.177094)
-mesh = SubResource("CylinderMesh_o5dn0")
+[node name="water_test" type="Node3D" parent="."]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0730467, 0.997329, 0, -0.997329, -0.0730467, -24.4785, -21.0397, 31.3948)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="water_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41827, 2.54828, 0.177094)
+mesh = SubResource("CapsuleMesh_d2gye")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="water_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7039, 2.54828, 0.177094)
+mesh = SubResource("CapsuleMesh_y5mlx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="water_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2223, 0.764676, -29.8559)
+mesh = SubResource("BoxMesh_568y3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="water_test"]
+transform = Transform3D(1, 0, 0, 0, -0.544068, 0.839041, 0, -0.839041, -0.544068, -87.6807, -22.5402, -8.11631)
 mesh = SubResource("CylinderMesh_o5dn0")
+skeleton = NodePath("../..")

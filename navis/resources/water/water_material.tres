@@ -1,18 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b4um0k6poawf5"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b4um0k6poawf5"]
 
 [ext_resource type="Shader" path="res://shaders/water-transparency.gdshader" id="1_ys4k8"]
-
-[sub_resource type="Gradient" id="Gradient_d8dqy"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.545455)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ebdog"]
-gradient = SubResource("Gradient_d8dqy")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_ys4k8")
-shader_parameter/animation_speed = 0.2
-shader_parameter/depth_max = 20.0
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/water_gradient = SubResource("GradientTexture1D_ebdog")
