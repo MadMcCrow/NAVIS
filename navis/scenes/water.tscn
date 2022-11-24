@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnxbwkj8g13lv"]
+[gd_scene load_steps=14 format=3 uid="uid://dnxbwkj8g13lv"]
 
-[ext_resource type="Material" uid="uid://b4um0k6poawf5" path="res://resources/water/water_material.tres" id="1_jod2x"]
+[ext_resource type="Environment" uid="uid://dcu64oq30ov0g" path="res://resources/water/water_environment.tres" id="1_1wt2j"]
+[ext_resource type="Material" uid="uid://c2inpdftu515o" path="res://resources/water/water_material.tres" id="1_jod2x"]
+[ext_resource type="CameraAttributesPractical" uid="uid://b5ej366fs6bjr" path="res://resources/camera/camera_settings.tres" id="2_1t4x5"]
 [ext_resource type="Script" path="res://shaders/scripts/water_node.gd" id="2_jmb5k"]
-[ext_resource type="Script" path="res://shaders/scripts/water_gen_mesh.gd" id="3_s2kyh"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_6k1vu"]
-material = ExtResource("1_jod2x")
-size = Vector2(500, 500)
+[sub_resource type="QuadMesh" id="QuadMesh_5y58j"]
+size = Vector2(1000, 1000)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e6yx"]
@@ -44,16 +44,18 @@ rings = 1
 [node name="water-scene" type="Node3D"]
 metadata/_edit_vertical_guides_ = [993.0]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_1wt2j")
+camera_attributes = ExtResource("2_1t4x5")
+
 [node name="water-by-script" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_jod2x")
 cast_shadow = 0
-ignore_occlusion_culling = true
-mesh = SubResource("QuadMesh_6k1vu")
+mesh = SubResource("QuadMesh_5y58j")
 script = ExtResource("2_jmb5k")
-water_script = ExtResource("3_s2kyh")
-editor_mesh = SubResource("QuadMesh_6k1vu")
 
 [node name="water_test" type="Node3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="water_test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41827, 2.54828, 0.177094)

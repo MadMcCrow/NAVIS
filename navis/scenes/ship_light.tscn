@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sd4avh51pcst"]
+
+[ext_resource type="PackedScene" uid="uid://dv4m4n0tlslxc" path="res://resources/boats/ship_light.gltf" id="1_wyj5d"]
+
+[node name="ship_light" instance=ExtResource("1_wyj5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.702383, 0, 0.833082)

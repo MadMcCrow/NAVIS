@@ -44,4 +44,4 @@ move_right={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="forward_plus"

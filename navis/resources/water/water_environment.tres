@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dcu64oq30ov0g"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h05d4"]
+rayleigh_coefficient = 0.99
+mie_coefficient = 0.006
+turbidity = 2.93
+sun_disk_scale = 2.92
+ground_color = Color(0, 0, 0, 1)
+energy_multiplier = 2.4
+
+[sub_resource type="Sky" id="Sky_lufj7"]
+sky_material = SubResource("PhysicalSkyMaterial_h05d4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_lufj7")
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+adjustment_enabled = true
+adjustment_saturation = 0.75

@@ -1,7 +1,42 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b4um0k6poawf5"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://c2inpdftu515o"]
 
-[ext_resource type="Shader" path="res://shaders/water-transparency.gdshader" id="1_ys4k8"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_ys4k8"]
+[ext_resource type="Texture2D" uid="uid://d365j6jv3flg3" path="res://resources/water/water_gradient.tres" id="2_rpl7v"]
+[ext_resource type="FastNoiseLite" uid="uid://doi2oa3otky4x" path="res://resources/water/water_noise.tres" id="3_eouow"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_omu0w"]
+width = 1024
+height = 1024
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.4
+as_normal_map = true
+bump_strength = 1.7
+noise = ExtResource("3_eouow")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xe5xc"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.5
+noise = ExtResource("3_eouow")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aa8bm"]
+seamless = true
+seamless_blend_skirt = 0.5
+as_normal_map = true
+noise = ExtResource("3_eouow")
 
 [resource]
-render_priority = 0
+render_priority = 100
 shader = ExtResource("1_ys4k8")
+shader_parameter/animation_speed = 0.1
+shader_parameter/depth_max = 3.0
+shader_parameter/foam_gradient = ExtResource("2_rpl7v")
+shader_parameter/foam_high = 0.6
+shader_parameter/foam_low = 0.4
+shader_parameter/fresnel = 0.3
+shader_parameter/noise_normalmap = SubResource("NoiseTexture2D_omu0w")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_xe5xc")
+shader_parameter/noise_turbulence = SubResource("NoiseTexture2D_aa8bm")
+shader_parameter/turbulence_amount = 0.02
+shader_parameter/uv_scale = Vector2(25, 25)
